@@ -1,0 +1,11 @@
+{
+  "name": "localstorage",
+  "version": "1.0.0",
+  "description": "Write down thoughts you get from listening to podcasts, save to your device and edit later",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

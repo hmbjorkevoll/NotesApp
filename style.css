@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+
+.input-area {
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin: 0 auto;
+    width: 800px;
+    max-width: 80%;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    font-family: 'Lobster', cursive;
+}
+
+.add-note-form {
+    padding: 20px;    
+}
+
+fieldset {
+    border: none;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+   }
+
+.form-control {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px auto;
+    display: flex;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+textarea {
+    resize: vertical;
+}
+
+label {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.submit {
+    width: 100%;
+    background-color: darkgrey;
+    color: black;
+    padding: 15px 15px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Lobster';
+    font-size: 1.2rem;
+}
+
+.submit:hover {
+    filter: brightness(80%);
+}
+
+.submit:active {
+    transform: translate(3px, 3px);
+}
+
+.notes-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 10px;
+}
+
+.note-card {
+    min-width: 350px;
+    max-width: 700px;
+    width: 30%;
+    margin: 10px;
+    padding: 10px;
+    font-size: large;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+}
+
+.edit {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #696969;
+    font-family: 'Lobster', sans-serif;
+}
+
+p {
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+}
+
+ul {
+    display: inline;
+    }
+
+li {
+	list-style: none;
+	color: #7B7B7B;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+}
+
+.date {
+    float: left;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+}
+
+.delete {
+    position: relative;
+    float: right;
+    font-size: 1rem;
+    background-color: darkgrey;
+    color: white;
+    padding: 10px 10px;
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Lobster', sans-serif;
+}
+
+.delete:hover {
+    filter: brightness(80%);
+}
+
+.delete:active {
+    transform: translate(3px, 3px);
+}
