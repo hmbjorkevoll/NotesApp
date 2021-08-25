@@ -14,17 +14,18 @@
         <form class="add-note-form" action="">
             <fieldset>
                 <label for="note-value">Thoughts</label><br>
-                <textarea class="form-control" id="note-value" placeholder="Add thoughts here"></textarea><br>
+                <textarea class="form-control" id="note-value" placeholder="Add thoughts here" autofocus></textarea><br>
                 <label for="show-value">Podcast Show</label><br>
                 <input type="text" class="form-control" id="show-value" placeholder="Add the Podcast Show"><br>
                 <label for="episode-value">Podcast Episode</label><br>
                 <input type="text" class="form-control" id="episode-value" placeholder="Add the Podcast Episode"><br>
-                <button type="submit" class="submit">Add note</button>
+                <button type="submit" class="submit" id='submit-form'>Add note</button>
             </fieldset>
         </form>
     </div>
-    <div class="notes-list">
-        <div class="note-card">
+    <p class="edit">(You can edit the text directly on the note)</p>
+     <div class="notes-list" id='notes-list'>
+     <!-- <div class="note-card">
                 <p class="edit">(You can edit the text directly on the note)</p>
                 <p class="note-show" contenteditable="true">Example Podcast Show</p>
                 <p class="note-episode" contenteditable="true">Example Podcast Episode</p>
@@ -33,65 +34,8 @@
                     <li class="date">Date added:</li>
                     <li class="delete">Delete note</li>
                 </ul>
-                <i></i>
-        </div>
-        <div class="note-card">
-                <p class="edit">(You can edit the text directly on the note)</p>
-                <p class="note-show" contenteditable="true">Example Podcast Show</p>
-                <p class="note-episode" contenteditable="true">Example Podcast Episode</p>
-                <p class="note-text" contenteditable="true">Example note text goes in here</p>
-                <ul>
-                    <li class="date">Date added:</li>
-                    <li class="delete">Delete note</li>
-                </ul>
-                <i></i>
-        </div>
-        <div class="note-card">
-                <p class="edit">(You can edit the text directly on the note)</p>
-                <p class="note-show" contenteditable="true">Example Podcast Show</p>
-                <p class="note-episode" contenteditable="true">Example Podcast Episode</p>
-                <p class="note-text" contenteditable="true">Example note text goes in here</p>
-                <ul>
-                    <li class="date">Date added:</li>
-                    <li class="delete">Delete note</li>
-                </ul>
-                <i></i>
-        </div>
-        <div class="note-card">
-                <p class="edit">(You can edit the text directly on the note)</p>
-                <p class="note-show" contenteditable="true">Example Podcast Show</p>
-                <p class="note-episode" contenteditable="true">Example Podcast Episode</p>
-                <p class="note-text" contenteditable="true">Example note text goes in here</p>
-                <ul>
-                    <li class="date">Date added:</li>
-                    <li class="delete">Delete note</li>
-                </ul>
-                <i></i>
-        </div>
-        <div class="note-card">
-                <p class="edit">(You can edit the text directly on the note)</p>
-                <p class="note-show" contenteditable="true">Example Podcast Show</p>
-                <p class="note-episode" contenteditable="true">Example Podcast Episode</p>
-                <p class="note-text" contenteditable="true">Example note text goes in here</p>
-                <ul>
-                    <li class="date">Date added:</li>
-                    <li class="delete">Delete note</li>
-                </ul>
-                <i></i>
-        </div>
-        <div class="note-card">
-                <p class="edit">(You can edit the text directly on the note)</p>
-                <p class="note-show" contenteditable="true">Example Podcast Show</p>
-                <p class="note-episode" contenteditable="true">Example Podcast Episode</p>
-                <p class="note-text" contenteditable="true">Example note text goes in here</p>
-                <ul>
-                    <li class="date">Date added:</li>
-                    <li class="delete">Delete note</li>
-                </ul>
-                <i></i>
-        </div>
-    
-    </div>
+        </div> -->
+    </div> 
     <script src="script.js"></script>
 </body>
 </html>
