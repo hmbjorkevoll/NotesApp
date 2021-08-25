@@ -4,6 +4,7 @@ Don't allow blank form to be submitted
 Date in short format
 
 // TO DO
+Change from p contenteditable to input/textarea to more easily manage scrolling of large bodies of text
 
 Edit functionality
 
