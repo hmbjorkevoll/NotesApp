@@ -1,4 +1,22 @@
-Stripe.com -type header/menu/animated graphics?
+// DONE
+Clear form on submit 
+Don't allow blank form to be submitted
+Date in short format
+
+// TO DO
+
+Edit functionality
+
 React
-styled CSS
+
 Login with Firebase, database management Firebase
+
+Styled CSS/CSS-in-JS
+
+Search for saved note
+
+Search/select podcast show based on API call, filter and show relevant episodes, newest first
+
+Stripe.com -type header/menu/animated graphics?
+
+Animations for adding/editing/deleting page?

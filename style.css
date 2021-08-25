@@ -72,6 +72,12 @@ label {
   transform: translate(3px, 3px);
 }
 
+.no-notes {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
 .notes-list {
   display: flex;
   justify-content: flex-start;
@@ -83,7 +89,6 @@ label {
   min-width: 340px;
   max-width: 700px;
   width: 30%;
-  /* margin-left: 0 ; */
   margin-right: 5px;
   margin-top: 5px;
   padding: 10px;
