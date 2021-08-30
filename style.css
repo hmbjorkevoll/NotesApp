@@ -6,7 +6,7 @@ html {
 }
 
 .input-area {
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: #f2f2f2;
   padding: auto;
   margin: 0 auto;
@@ -24,7 +24,7 @@ h1 {
 .add-note-form {
   padding: 10px;
   border: 2px solid darkgrey;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 fieldset {
@@ -38,7 +38,7 @@ fieldset {
   margin: 10px auto;
   display: flex;
   border: 3px solid #ccc;
-  border-radius: 10px;
+  border-radius: 8px;
   box-sizing: border-box;
   font-family: inherit;
   font-size: inherit;
@@ -55,12 +55,12 @@ label {
 
 .submit {
   width: 100%;
-  background-color: #5A5A5A;
+  background-color: #5a5a5a;
   color: white;
   padding: 15px 15px;
   margin: 0 auto;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-family: "Atkinson Hyperlegible", sans-serif;
   font-size: 1.2rem;
@@ -102,7 +102,7 @@ label {
   padding: 10px;
   font-size: large;
   border: 2px solid darkgrey;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: #f2f2f2;
 }
 
@@ -148,7 +148,7 @@ li {
 .card-button-main {
   float: right;
   font-size: 1rem;
-  background-color: #5A5A5A;
+  background-color: #5a5a5a;
   color: white;
   padding: 10px 10px;
   margin: 5px;
@@ -169,8 +169,8 @@ li {
 .card-button-secondary {
   float: right;
   font-size: 1rem;
-  background-color: #E0E0E0;
-  color: #5A5A5A;
+  background-color: #e0e0e0;
+  color: #5a5a5a;
   padding: 10px 10px;
   margin: 5px;
   border: none;
@@ -193,4 +193,9 @@ li {
 
 .save-note {
   display: none;
+}
+
+.editing {
+  border: 4px solid lightskyblue;
+  border-radius: 8px;
 }

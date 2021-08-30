@@ -27,7 +27,7 @@ function addNoteToDOM() {
     }</p>
     <p class="note-text" contenteditable="false">${element.noteText}</p>
     <ul>
-    <li class="date">Date added: ${date}</li>
+    <li class="date">Last updated: ${date}</li>
     <li class="card-button-secondary" id="${index}" onClick="deleteNote(this.id)">Delete note</li>
     <li class="card-button-main edit-note" id="${index}" onClick="editNote(this.id)">Edit note</li>
     </ul>
@@ -55,23 +55,49 @@ function deleteNote(id) {
   addNoteToDOM();
 }
 
-const edit = document.querySelector(".edit-note");
 const noteShow = document.getElementsByClassName("note-show");
 const noteEpisode = document.getElementsByClassName("note-episode");
-const noteText = document.getElementsByClassName("note-text");
+const noteContent = document.getElementsByClassName("note-text");
 
 // Make individual note editable, toggle save button visible, hide edit button
-function editNote(event) {
-  const button = this.event.target;
-  if (button.textContent === "Edit note") {
-    button.value = "Save note";
-    button.textContent = "Save note";
+function editNote(event, id) {
+  const thisNote = this.event.target;
+  if (thisNote.textContent === "Edit note") {
+    thisNote.value = "Save note";
+    thisNote.textContent = "Save note";
     noteShow[event].contentEditable = "True";
-  } else if (button.textContent === "Save note") {
-    button.value = "Edit note";
-    button.textContent = "Edit note";
-    noteShow[event].contentEditable = "False";
+    noteShow[event].classList.add("editing");
+    noteEpisode[event].contentEditable = "True";
+    noteEpisode[event].classList.add("editing");
+    noteContent[event].contentEditable = "True";
+    noteContent[event].classList.add("editing");
+  } else if (thisNote.textContent === "Save note") {
+    thisNote.value = "Edit note";
+    thisNote.textContent = "Edit note";
+    saveUpdatedNote(id);
   }
+}
+
+// Save edited note to localStorage
+function saveUpdatedNote(id) {
+  const parentOfTarget = this.event.target.parentNode.parentNode;
+  let podcastNameOnNote =
+    parentOfTarget.getElementsByClassName("note-show")[0].innerHTML;
+  let podcastEpisodeOnNote =
+    parentOfTarget.getElementsByClassName("note-episode")[0].innerHTML;
+  let contentOnNote =
+    parentOfTarget.getElementsByClassName("note-text")[0].innerHTML;
+  const thisNote = this.event.target;
+  if (thisNote) {
+    (thisNote.noteText = contentOnNote),
+      (thisNote.podcastShow = podcastNameOnNote),
+      (thisNote.podcastEpisode = podcastEpisodeOnNote);
+    let noteIndex = thisNote.id;
+    notes.splice(noteIndex, 1);
+    notes.unshift(thisNote);
+    localStorage.setItem("notes", JSON.stringify(notes));
+    addNoteToDOM();
+  } else return;
 }
 
 // Get data from form, prevent default, only allow if there is a note added
