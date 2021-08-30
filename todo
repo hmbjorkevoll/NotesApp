@@ -4,9 +4,9 @@ Don't allow blank form to be submitted
 Date in short format
 
 // TO DO
-Change from p contenteditable to input/textarea to more easily manage scrolling of large bodies of text
-
 Edit functionality
+
+Show how many notes are saved at any given time
 
 React
 
@@ -17,6 +17,10 @@ Styled CSS/CSS-in-JS
 Search for saved note
 
 Search/select podcast show based on API call, filter and show relevant episodes, newest first
+
+Undo/redo
+
+Tag notes, make tags searchable
 
 Stripe.com -type header/menu/animated graphics?
 

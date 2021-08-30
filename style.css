@@ -23,6 +23,8 @@ h1 {
 
 .add-note-form {
   padding: 10px;
+  border: 2px solid darkgrey;
+  border-radius: 10px;
 }
 
 fieldset {
@@ -53,14 +55,14 @@ label {
 
 .submit {
   width: 100%;
-  background-color: darkgrey;
-  color: black;
+  background-color: #5A5A5A;
+  color: white;
   padding: 15px 15px;
   margin: 0 auto;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-family: "Lobster";
+  font-family: "Atkinson Hyperlegible", sans-serif;
   font-size: 1.2rem;
 }
 
@@ -86,31 +88,47 @@ label {
 }
 
 .note-card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  word-wrap: break-word;
   min-width: 340px;
   max-width: 700px;
   width: 30%;
+  height: 500px;
   margin-right: 5px;
   margin-top: 5px;
   padding: 10px;
   font-size: large;
-  border: 2px solid #ccc;
+  border: 2px solid darkgrey;
   border-radius: 10px;
   background-color: #f2f2f2;
 }
 
 .edit {
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: black;
   font-family: "Lobster", sans-serif;
 }
 
 p {
   font-family: "Atkinson Hyperlegible", sans-serif;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.note-text {
+  flex-grow: 1;
+  overflow-y: scroll;
+  max-height: 240px;
 }
 
 ul {
   display: inline;
+  margin-top: auto;
+  border-top: solid 2px #ccc;
 }
 
 li {
@@ -121,30 +139,58 @@ li {
 
 .date {
   float: left;
-  max-width: 80%;
+  max-width: 30%;
   font-family: "Atkinson Hyperlegible", sans-serif;
   font-size: 0.9rem;
   word-wrap: break-word;
 }
 
-.delete {
-  position: relative;
+.card-button-main {
   float: right;
   font-size: 1rem;
-  background-color: darkgrey;
+  background-color: #5A5A5A;
   color: white;
   padding: 10px 10px;
-  margin: 0 auto;
+  margin: 5px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-family: "Lobster", sans-serif;
+  font-family: "Atkinson Hyperlegible", sans-serif;
 }
 
-.delete:hover {
+.card-button-main:hover {
   filter: brightness(80%);
 }
 
-.delete:active {
+.card-button-main:active {
   transform: translate(3px, 3px);
+}
+
+.card-button-secondary {
+  float: right;
+  font-size: 1rem;
+  background-color: #E0E0E0;
+  color: #5A5A5A;
+  padding: 10px 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+}
+
+.card-button-secondary:hover {
+  filter: brightness(80%);
+}
+
+.card-button-secondary:active {
+  transform: translate(3px, 3px);
+}
+
+.edit-note {
+  display: inherit;
+}
+
+.save-note {
+  display: none;
 }
