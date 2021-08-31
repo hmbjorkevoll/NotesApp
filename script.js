@@ -112,7 +112,7 @@ function getFormData(event) {
     podcastShow: podcastNameValue,
     podcastEpisode: podcastEpisodeValue,
   };
-  notes.push(note);
+  notes.unshift(note);
   localStorage.setItem("notes", JSON.stringify(notes));
   addNoteToDOM();
   submitForm.reset();
