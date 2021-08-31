@@ -2,9 +2,9 @@
 Clear form on submit 
 Don't allow blank form to be submitted
 Date in short format
+Edit functionality
 
 // TO DO
-Edit functionality
 
 Show how many notes are saved at any given time
 
@@ -24,4 +24,4 @@ Tag notes, make tags searchable
 
 Stripe.com -type header/menu/animated graphics?
 
-Animations for adding/editing/deleting page?
+Animations for adding/editing/deleting note?
