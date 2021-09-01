@@ -1,4 +1,6 @@
-let notes = JSON.parse(window.localStorage.getItem("notes") || "[]");
+import { useLocalStorage } from "./localStorage";
+
+// let notes = JSON.parse(window.localStorage.getItem("notes") || "[]");
 
 export default function AddNoteForm() {
   const addNewNote = (event) => {
@@ -7,13 +9,24 @@ export default function AddNoteForm() {
     let podcastEpisodeValue = event.target.podcastEpisode.value;
     let noteTextValue = event.target.podcastThoughts.value;
 
-    const note = {
+    const Note = () => {
+      const [podcastNameValue, setPodcastNameValue] = useLocalStorage(
+        "podcastName",
+        ""
+      );
+      const [podcastEpisodeValue, setPodcastEpisodeValue] = useLocalStorage(
+        "podcastEpisode",
+        ""
+      );
+      const [noteTextValue, setNoteTextValue] = useLocalStorage("noteText", "");
+    };
+    /* const note = {
       noteText: noteTextValue,
       podcastShow: podcastNameValue,
       podcastEpisode: podcastEpisodeValue,
     };
     notes.unshift(note);
-    window.localStorage.setItem("notes", JSON.stringify(notes));
+    window.localStorage.setItem("notes", JSON.stringify(notes)); */
     // event.target.reset();
   };
 

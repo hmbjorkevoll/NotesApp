@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import NoteLayout from "../components/note-layout";
 import ShowNotes from "../components/note";
 import AddNoteForm from "../components/add-note-form";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   return (
