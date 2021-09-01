@@ -1,5 +1,7 @@
-export default function Note() {
-  const notes = localStorage.getItem("notes");
+let date = new Date().toLocaleString().split(",")[0];
+
+export default function ShowNotes() {
+  const notes = window.localStorage.getItem("notes");
   if (notes === null) {
     notesObj = [];
   } else {

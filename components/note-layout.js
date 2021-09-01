@@ -1,3 +1,5 @@
-export default function NoteLayout({ children }) {
-  return <div>{children}</div>;
+import ShowNotes from "./note";
+
+export default function NoteLayout({ ShowNotes }) {
+  return <div>{ShowNotes}</div>;
 }

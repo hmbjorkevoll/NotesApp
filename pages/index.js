@@ -3,13 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import NoteLayout from "../components/note-layout";
-import Note from "../components/note";
+import ShowNotes from "../components/note";
+import AddNoteForm from "../components/add-note-form";
 
 export default function Home() {
-  return <> 
-  <Head><title>Ahhh</title></Head>
-  
-    <h3>Next JS</h3>
-    
-  </>
+  return (
+    <>
+      <Head>
+        <title>Thoughts from podcasts</title>
+      </Head>
+      <h1>Write down thoughts from podcasts</h1>
+
+      <AddNoteForm />
+      <p className="edit">
+        To edit, press edit note, change what you want directly in the note,
+        then press the save button
+      </p>
+      <NoteLayout />
+    </>
+  );
 }
