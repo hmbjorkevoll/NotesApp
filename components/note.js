@@ -1,5 +1,10 @@
 let date = new Date().toLocaleString().split(",")[0];
 
+// MAKE THIS AS A COMPONENT, SEPARATE LOGIC
+
+
+
+/* 
 export default function ShowNotes() {
   const notes = window.localStorage.getItem("notes");
   if (notes === null) {
@@ -34,3 +39,4 @@ export default function ShowNotes() {
     notesList.innerHTML = `<p class="no-notes">No notes added! Add a note with the form above</p>`;
   }
 }
+ */

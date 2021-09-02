@@ -31,42 +31,44 @@ export default function AddNoteForm() {
   };
 
   return (
-    <form onSubmit={AddNoteForm}>
-      <label htmlFor="note-value">Thoughts</label>
-      <br />
-      <textarea
-        className="form-control"
-        id="note-value"
-        placeholder="Add thoughts here"
-        name="podcastThoughts"
-        autoFocus
-        required
-        pattern="\S+.*"
-      ></textarea>
-      <br />
-      <label htmlFor="show-value">Podcast Show</label>
-      <br />
-      <input
-        type="text"
-        className="form-control"
-        id="show-value"
-        placeholder="Add the podcast show"
-        name="podcastName"
-      />
-      <br />
-      <label htmlFor="episode-value">Podcast Episode</label>
-      <br />
-      <input
-        type="text"
-        className="form-control"
-        id="episode-value"
-        placeholder="Add the podcast episode"
-        name="podcastEpisode"
-      />
-      <br />
-      <button type="submit" className="submit" id="submit-form">
-        Add note
-      </button>
-    </form>
+    <div className="input-area">
+      <form className="add-note-form" onSubmit={AddNoteForm}>
+        <label htmlFor="note-value">Thoughts</label>
+        <br />
+        <textarea
+          className="form-control"
+          id="note-value"
+          placeholder="Add thoughts here"
+          name="podcastThoughts"
+          autoFocus
+          required
+          pattern="\S+.*"
+        ></textarea>
+        <br />
+        <label htmlFor="show-value">Podcast Show</label>
+        <br />
+        <input
+          type="text"
+          className="form-control"
+          id="show-value"
+          placeholder="Add the podcast show"
+          name="podcastName"
+        />
+        <br />
+        <label htmlFor="episode-value">Podcast Episode</label>
+        <br />
+        <input
+          type="text"
+          className="form-control"
+          id="episode-value"
+          placeholder="Add the podcast episode"
+          name="podcastEpisode"
+        />
+        <br />
+        <button type="submit" className="submit" id="submit-form">
+          Add note
+        </button>
+      </form>
+    </div>
   );
 }
