@@ -1,74 +1,71 @@
-import { useLocalStorage } from "./localStorage";
+import { Box, FormControl, TextField, Button } from "@mui/material";
+import toast from "react-hot-toast";
+import { serverTimestamp, doc, setDoc } from "firebase/firestore";
+import { useForm } from "react-hook-form";
 
-// let notes = JSON.parse(window.localStorage.getItem("notes") || "[]");
+export default function AddNoteForm(event) {
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => console.log(data);
 
-export default function AddNoteForm() {
-  const addNewNote = (event) => {
-    event.preventDefault();
-    let podcastNameValue = event.target.podcastName.value;
-    let podcastEpisodeValue = event.target.podcastEpisode.value;
-    let noteTextValue = event.target.podcastThoughts.value;
-
-    const Note = () => {
-      const [podcastNameValue, setPodcastNameValue] = useLocalStorage(
-        "podcastName",
-        ""
-      );
-      const [podcastEpisodeValue, setPodcastEpisodeValue] = useLocalStorage(
-        "podcastEpisode",
-        ""
-      );
-      const [noteTextValue, setNoteTextValue] = useLocalStorage("noteText", "");
-    };
-    /* const note = {
-      noteText: noteTextValue,
-      podcastShow: podcastNameValue,
-      podcastEpisode: podcastEpisodeValue,
-    };
-    notes.unshift(note);
-    window.localStorage.setItem("notes", JSON.stringify(notes)); */
-    // event.target.reset();
-  };
+  // EXAMPLE OF API REQUEST FROM ITUNES:
+  // SEARCH FOR TIM FERRISS, IN THE PODCAST NAME ONLY:
+  // https://itunes.apple.com/search?term=tim+ferriss&media=podcast&attribute=titleTerm
+  //
+  // example gathered from https://affiliate.itunes.apple.com/resources/documentation/itunes-store-web-service-search-api/#overview
 
   return (
-    <div className="input-area">
-      <form className="add-note-form" onSubmit={AddNoteForm}>
-        <label htmlFor="note-value">Thoughts</label>
-        <br />
-        <textarea
+    <Box
+      component="form"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignContent: "center",
+      }}
+    >
+      <FormControl className="add-note-form" onSubmit={handleSubmit(onSubmit)}>
+        <TextField
+          label="Add your note here"
+          variant="outlined"
+          multiline
+          rows={5}
           className="form-control"
           id="note-value"
-          placeholder="Add thoughts here"
-          name="podcastThoughts"
           autoFocus
           required
           pattern="\S+.*"
-        ></textarea>
-        <br />
-        <label htmlFor="show-value">Podcast Show</label>
-        <br />
-        <input
+          margin="normal"
+        ></TextField>
+        <TextField
+          margin="normal"
+          label="Add the podcast show"
+          variant="outlined"
           type="text"
           className="form-control"
           id="show-value"
           placeholder="Add the podcast show"
           name="podcastName"
         />
-        <br />
-        <label htmlFor="episode-value">Podcast Episode</label>
-        <br />
-        <input
+        <TextField
+          label="Add the podcast episode"
+          variant="outlined"
           type="text"
           className="form-control"
           id="episode-value"
           placeholder="Add the podcast episode"
           name="podcastEpisode"
+          margin="normal"
         />
         <br />
-        <button type="submit" className="submit" id="submit-form">
+        <Button
+          variant="contained"
+          type="submit"
+          className="submit"
+          id="submit-form"
+          onClick={handleSubmit}
+        >
           Add note
-        </button>
-      </form>
-    </div>
+        </Button>
+      </FormControl>
+    </Box>
   );
 }

@@ -1,26 +1,40 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import styles from "../styles/Home.module.css";
-import NoteLayout from "../components/note-layout";
-import ShowNotes from "../components/note";
-import AddNoteForm from "../components/add-note-form";
-import { useState, useEffect } from "react";
+import Notes from "../components/notesPage";
+import { auth } from "../lib/firebase";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { useEffect, useState } from "react";
 
-export default function Home() {
+const signInWithGoogle = () => signInWithPopup(auth, new GoogleAuthProvider());
+
+const SignIn = () => {
   return (
-    <>
-      <Head>
-        <title>Thoughts from podcasts</title>
-      </Head>
-      <h1>Write down thoughts from podcasts</h1>
-
-      <AddNoteForm />
-      <p className="edit">
-        To edit, press edit note, change what you want directly in the note,
-        then press the save button
-      </p>
-      <NoteLayout />
-    </>
+    <main>
+      <section>
+        <p>Take notes from you favourite podcasts!</p>
+        <p>
+          You can log in with your Google account, no user information is stored
+          in the app. If you sign in later, all your notes will be stored for
+          you.
+        </p>
+      </section>
+      <div>
+        <button onClick={signInWithGoogle} className="loginbutton">
+          {"Log in with Google"}
+        </button>
+      </div>
+    </main>
   );
+};
+
+export default function Home(props) {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, setUser);
+  }, []);
+
+  return user ? <Notes /> : <SignIn />;
 }
