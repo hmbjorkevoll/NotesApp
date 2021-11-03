@@ -1,4 +1,6 @@
+import Head from "next/head";
 import Notes from "../components/notesPage";
+import SignIn from "../components/signin";
 import { auth } from "../lib/firebase";
 import {
   GoogleAuthProvider,
@@ -9,32 +11,19 @@ import { useEffect, useState } from "react";
 
 const signInWithGoogle = () => signInWithPopup(auth, new GoogleAuthProvider());
 
-const SignIn = () => {
-  return (
-    <main>
-      <section>
-        <p>Take notes from you favourite podcasts!</p>
-        <p>
-          You can log in with your Google account, no user information is stored
-          in the app. If you sign in later, all your notes will be stored for
-          you.
-        </p>
-      </section>
-      <div>
-        <button onClick={signInWithGoogle} className="loginbutton">
-          {"Log in with Google"}
-        </button>
-      </div>
-    </main>
-  );
-};
-
-export default function Home(props) {
+export default function Home() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     onAuthStateChanged(auth, setUser);
   }, []);
 
-  return user ? <Notes /> : <SignIn />;
+  return (
+    <>
+      <Head>
+        <title>Thoughts from podcasts</title>
+      </Head>
+      {user ? <Notes auth={auth} /> : <SignIn signin={signInWithGoogle} />}
+    </>
+  );
 }

@@ -1,53 +1,46 @@
-// TODO Make notes editable and deletable, update Firebase accordigly
+// TODO Make notes editable, update Firebase accordigly
 import toast from "react-hot-toast";
+import { deleteDoc, doc } from "firebase/firestore";
+import { firestore, auth } from "../lib/firebase";
+import styles from "../styles/NoteLayout.module.css";
 
-let date = new Date().toLocaleString().split(",")[0];
+export default function NoteLayout({ notes, setNote }) {
+  function handleEdit(note) {
+    // Take contents from note to the form, wait for the submit to update rendered note,
+    // otherwise it can be lost by editing and then reseting the form
+    setNote({
+      noteText: note.noteText,
+      podcastTitle: note.podcastTitle,
+      podcastEpisode: note.podcastEpisode,
+      id: note.id,
+    });
+    console.log(note.noteText);
+  }
 
-const handleEdit = (event) => {
-  event.preventDefault();
-};
-
-const handleDelete = (event) => {
-  event.preventDefault();
-  toast.error("Succesfully deleted note");
-};
-
-export default function NoteLayout({ notes }) {
+  async function handleDelete(note) {
+    // Identify the correct note by the note ID, then delete it from firestore
+    await deleteDoc(
+      doc(firestore, `users/${auth.currentUser.uid}/notes/${note.id}`)
+    );
+    // Show a toast message on successfully deleting note
+    toast.error("Succesfully deleted note");
+  }
   return (
     <section>
       {notes &&
         notes.map((note) => (
           <div key={note.id}>
-            <section>
-              <p>{note.noteText}</p>
-              <p>{note.podcastTitle}</p>
-              <p>{note.podcastEpisode}</p>
-              <div>
-                <p>
-                  {/* // TODO: THIS NEEDS TO CHANGE!!!! */}
-                  Last updated: {note.id}
-                </p>
-                <button onClick={handleEdit} variant="contained">
-                  Edit
-                </button>
-                <button
-                  onClick={handleDelete}
-                  sx={{
-                    float: "right",
-                    color: "white",
-                    margin: "5px",
-                    backgroundColor: "#5a5a5a",
-                    ":hover": {
-                      color: "white",
-                      backgroundColor: "#5a5a5a",
-                      filter: "brightness(80%)",
-                    },
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
-            </section>
+            <p value={note.noteText}>{note.noteText}</p>
+            <p value={note.podcastTitle}>{note.podcastTitle}</p>
+            <p value={note.podcastEpisode}>{note.podcastEpisode}</p>
+            <li className={styles.dateAndButtons}>
+              <p>
+                {/* // TODO: THIS NEEDS TO CHANGE!!!! */}
+                Last updated: {note.id}
+              </p>
+              <button onClick={() => handleEdit(note)}>Edit</button>
+              <button onClick={() => handleDelete(note)}>Delete</button>
+            </li>
           </div>
         ))}
     </section>
