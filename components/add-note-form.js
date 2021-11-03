@@ -1,10 +1,10 @@
 import toast from "react-hot-toast";
 import {
-  serverTimestamp,
   doc,
   addDoc,
   updateDoc,
   collection,
+  serverTimestamp,
 } from "firebase/firestore";
 import styles from "../styles/AddNoteForm.module.css";
 // import { useForm } from "../lib/useForm";
@@ -28,7 +28,6 @@ export default function AddNoteForm({ auth, note, setNote, notes }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(notes);
     if (notes.some((e) => e.id === note.id)) {
       updateNote();
     } else newNote();
@@ -50,25 +49,27 @@ export default function AddNoteForm({ auth, note, setNote, notes }) {
         noteText: note.noteText,
         podcastTitle: note.podcastTitle,
         podcastEpisode: note.podcastEpisode,
-        id: !note.id ? timestamp : note.id,
+        updatedAt: serverTimestamp(),
       }
     );
+    toast.success("Updated note!");
   }
 
   async function newNote() {
+    const timestamp = Date.now();
     await addDoc(
       collection(firestore, `users/${auth.currentUser.uid}/notes/`),
       {
         noteText: note.noteText,
         podcastTitle: note.podcastTitle,
         podcastEpisode: note.podcastEpisode,
-        id: !note.id ? timestamp : note.id,
+        id: timestamp,
+        createdAt: serverTimestamp(),
       },
       { merge: true }
     );
     toast.success("Added new note!");
   }
-  const timestamp = serverTimestamp();
 
   return (
     note,

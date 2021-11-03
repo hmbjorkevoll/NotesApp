@@ -1,4 +1,3 @@
-// TODO Make notes editable, update Firebase accordigly
 import toast from "react-hot-toast";
 import { deleteDoc, doc } from "firebase/firestore";
 import { firestore, auth } from "../lib/firebase";
@@ -14,7 +13,6 @@ export default function NoteLayout({ notes, setNote }) {
       podcastEpisode: note.podcastEpisode,
       id: note.id,
     });
-    console.log(note.noteText);
   }
 
   async function handleDelete(note) {
@@ -25,24 +23,37 @@ export default function NoteLayout({ notes, setNote }) {
     // Show a toast message on successfully deleting note
     toast.error("Succesfully deleted note");
   }
+
+  function timestampToString(note) {
+    if (note.createdAt !== null) {
+      let time = note.createdAt.toDate();
+      let timestring = time.toLocaleString().split(",");
+      return timestring;
+    }
+  }
+
   return (
     <section>
-      {notes &&
+      {notes.length === 0 ? (
+        <p>You have no notes! Add one to see it appear here.</p>
+      ) : (
+        notes &&
         notes.map((note) => (
           <div key={note.id}>
-            <p value={note.noteText}>{note.noteText}</p>
-            <p value={note.podcastTitle}>{note.podcastTitle}</p>
-            <p value={note.podcastEpisode}>{note.podcastEpisode}</p>
+            <p>{note.noteText}</p>
+            <p>{note.podcastTitle}</p>
+            <p>{note.podcastEpisode}</p>
             <li className={styles.dateAndButtons}>
               <p>
                 {/* // TODO: THIS NEEDS TO CHANGE!!!! */}
-                Last updated: {note.id}
+                Created at: {timestampToString(note)}
               </p>
               <button onClick={() => handleEdit(note)}>Edit</button>
               <button onClick={() => handleDelete(note)}>Delete</button>
             </li>
           </div>
-        ))}
+        ))
+      )}
     </section>
   );
 }

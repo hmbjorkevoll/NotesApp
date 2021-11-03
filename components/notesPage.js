@@ -1,7 +1,7 @@
 import NoteLayout from "./note-layout";
 import { useEffect, useState } from "react";
 import { auth, firestore } from "../lib/firebase";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, orderBy } from "firebase/firestore";
 import UpperSection from "./upperSection";
 import AddNoteForm from "./add-note-form";
 import SearchBox from "./searchbox";
@@ -19,12 +19,20 @@ export default function Notes() {
     id: null,
   });
 
+  // Show spinner on loading
+  const [loading, setLoading] = useState(false);
+
   // Get all notes for the user from the database, update the array of all notes
   useEffect(() => {
     return onSnapshot(
       collection(firestore, `users/${auth.currentUser.uid}/notes`),
       (snapshot) => {
-        setNotes(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        setNotes(
+          snapshot.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }))
+        );
       }
     );
   }, []);
@@ -41,10 +49,7 @@ export default function Notes() {
         {/* <SearchBox /> */}
         <section>
           {!notes ? (
-            <>
-              <Loader show />
-              <p>No notes!</p>
-            </>
+            <Loader show />
           ) : (
             <NoteLayout
               notes={notes}
