@@ -1,11 +1,8 @@
 {
   "folders": [
-	{
-		"path": "."
-	},
-	{
-		"path": "..\\NotesApp"
-	}
-],
+    {
+      "path": "."
+    }
+  ],
   "settings": {}
 }
