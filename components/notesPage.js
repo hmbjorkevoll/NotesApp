@@ -19,7 +19,7 @@ export default function Notes() {
     id: null,
   });
 
-  // Show spinner on loading
+  // TODO: Show spinner on loading
   const [loading, setLoading] = useState(false);
 
   // Get all notes for the user from the database, update the array of all notes
@@ -43,11 +43,11 @@ export default function Notes() {
 
   return (
     <>
-      <main>
+      <main className="max-w-2xl xl:max-w-full">
         <UpperSection notes={notes} signOut={signOut} />
         <AddNoteForm auth={auth} note={note} setNote={setNote} notes={notes} />
         {/* <SearchBox /> */}
-        <section>
+        <section className="flex flex-wrap max-w-2xl m-auto lg:max-w-full">
           {!notes ? (
             <Loader show />
           ) : (

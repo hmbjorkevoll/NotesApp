@@ -6,8 +6,6 @@ import {
   collection,
   serverTimestamp,
 } from "firebase/firestore";
-import styles from "../styles/AddNoteForm.module.css";
-// import { useForm } from "../lib/useForm";
 import { firestore } from "../lib/firebase";
 
 export default function AddNoteForm({ auth, note, setNote, notes }) {
@@ -76,10 +74,11 @@ export default function AddNoteForm({ auth, note, setNote, notes }) {
     setNote,
     handleChange,
     (
-      <div className={styles.noteInput}>
-        <h2 className={styles.h2}>Write down thoughts from podcasts</h2>
+      <div className="flex flex-col m-auto mb-20">
+        <h2 className="text-center m-5">Write down thoughts from podcasts</h2>
+
         <form onSubmit={handleSubmit}>
-          <fieldset className={styles.addNoteForm}>
+          <fieldset className="flex flex-col p-2">
             <label htmlFor="noteText">Thoughts</label>
             <textarea
               placeholder="Add thoughts here"
@@ -105,12 +104,20 @@ export default function AddNoteForm({ auth, note, setNote, notes }) {
               value={note.podcastEpisode}
               onChange={handleChange}
             />
-            <button type="submit" className={styles.addNote}>
-              Add note
-            </button>
-            <button className={styles.resetForm} onClick={resetForm}>
-              Reset
-            </button>
+            <div className="flex justify-between mt-5">
+              <button
+                type="submit"
+                className="inline-flex bg-green-500 border border-green-500 text-white py-2 px-4 hover:bg-green-600 hover:border-green-800 active:scale-90"
+              >
+                Save note
+              </button>
+              <button
+                className="inline-flex bg-gray-200  border border-gray-300 text-gray-800 py-2 px-4 hover:bg-gray-400 hover:border-gray-500 active:scale-90"
+                onClick={resetForm}
+              >
+                Reset form
+              </button>
+            </div>
           </fieldset>
         </form>
       </div>
